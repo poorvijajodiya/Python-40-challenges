@@ -1,0 +1,46 @@
+print("Welcome to the Average Calculator App")
+print()
+ls= []
+name = input("What is your name: ").title()
+grades = int(input("How many grades would you like to enter: "))
+for i in range(grades):
+    a = int(input("Enter grades: "))
+    ls.append(a)
+print("Grades Highest to Lowest:",end = "\n")
+ls.sort(reverse=True)
+for j in ls:
+    print(j)
+ls1 = ls.copy()
+avg = float(sum(ls)/len(ls))
+avg = round(avg, 2)
+print("{} Grades Summary:\n\tTotal Number of Grades: {}\n\tHighest Grade: {}\n\tLowest Grade: {}\n\tAverage: {}".format(name, grades,ls[0],ls[-1],avg))
+d = float(input("What is your desired average: "))
+print()
+print("Good luck {}!".format(name))
+req = d*(len(ls)+1)-sum(ls)
+req = round(req, 2)
+print("You will need to get a {} on your next assignment to earn a {} average.".format(req,d))
+print("Lets see what your average could have been if you did better/worse on an assignment.")
+grade_chng = int(input("What grade would you like to change: "))
+print("What grade would you like to change {} to: ".format(grade_chng),end="")
+n = int(input())
+ls.remove(grade_chng)
+ls.append(n)
+ls.sort(reverse=True)
+print("New Grades Highest to Lowest:")
+for k in ls:
+    print(k)
+avg1 = float(sum(ls)/len(ls))
+avg1 = round(avg1, 2)
+print("{} New Grades Summary:\n\tTotal Number of Grades: {}\n\tHighest Grade: {}\n\tLowest Grade: {}\n\tAverage: {}".format(name, len(ls),ls[0],ls[-1],avg1))
+print("Your new average would be a {} compared to your real average of {}!".format(avg1,avg))
+avg_chng = avg1-avg
+avg_chng = round(avg_chng, 2)
+print("that is a change of {}".format(avg_chng))
+if d != avg1:
+    print("Too bad your original grades are still the same!")
+    print(ls1)
+else:
+    print(ls)
+print("You should go ask for extra credit!")
+
